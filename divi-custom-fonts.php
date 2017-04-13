@@ -13,13 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_action( 'admin_enqueue_scripts', 'afd_admin_enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', 'afd_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'afd_enqueue_styles' );
  
 function afd_admin_enqueue_scripts() {
   wp_enqueue_style('fonts-admin', plugin_dir_url( __FILE__ ) .'/fonts/fonts-admin.css');
 }
-add_action( 'wp_enqueue_scripts', 'afd_enqueue_styles' );
 function afd_enqueue_styles() {
-
     wp_enqueue_style( 'fonts', plugin_dir_url( __FILE__ )  . '/fonts/fonts.css');
 }
 
