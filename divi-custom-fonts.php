@@ -29,13 +29,13 @@ function afd_enqueue_styles() {
 function afd_custom_fonts($websafe_fonts) {
 
 	$websafe_fonts['Platform'] = [
-		'styles'    => '400,300,600,700,800',
+		'styles'    => '300,400,600,700,800',
 		'character_set' => 'latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic',
 		'type'      => 'sans-serif',
 		'standard'	=> 1,
 	];
 	$websafe_fonts['PublicoTextMono'] = [
-		'styles'    => '400,300,600,700,800',
+		'styles'    => '300,400,600,700,800',
 		'character_set' => 'latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic',
 		'type'      => 'sans-serif',
 		'standard'	=> 1,
