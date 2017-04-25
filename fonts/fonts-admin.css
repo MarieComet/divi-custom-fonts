@@ -1,3 +1,6 @@
+/*
+Affichage des img situées dans /img/ dans les sélecteurs du customizer
+*/
 .et_google_font_options li.et_gf_platform, .et_google_font_custom_select span.et_gf_platform {
   background-image: url('img/platform.png');
 }

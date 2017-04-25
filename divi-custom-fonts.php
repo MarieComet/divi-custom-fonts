@@ -10,32 +10,39 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
+// Enqueue admin scripts
 add_action( 'admin_enqueue_scripts', 'afd_admin_enqueue_scripts' );
-add_action( 'admin_enqueue_scripts', 'afd_enqueue_styles' );
+// Enqueue front scripts
 add_action( 'wp_enqueue_scripts', 'afd_enqueue_styles' );
- 
+
+// Charge le fichier CSS qui affiche les images correspondantes aux nvlles fonts (admin)
 function afd_admin_enqueue_scripts() {
   wp_enqueue_style('fonts-admin', plugin_dir_url( __FILE__ ) .'/fonts/fonts-admin.css');
 }
+// Charge le fichier contenant les font-face pour les nvlles fonts (front)
 function afd_enqueue_styles() {
-    wp_enqueue_style( 'fonts', plugin_dir_url( __FILE__ )  . '/fonts/fonts.css');
+  wp_enqueue_style( 'fonts', plugin_dir_url( __FILE__ )  . '/fonts/fonts.css');
 }
 
+// Ajoute nos nvlles fonts aux sélecteurs du customizer et des modules
+// Note : le param 'standard' à 1 est important, sinon Divi va tenter de charger ces fonts via google fonts et provoquer une erreur JS dans le customizer
 function afd_custom_fonts($websafe_fonts) {
 
 	$websafe_fonts['Platform'] = [
 		'styles'    => '400,300,600,700,800',
 		'character_set' => 'latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic',
 		'type'      => 'sans-serif',
+		'standard'	=> 1,
 	];
 	$websafe_fonts['PublicoTextMono'] = [
 		'styles'    => '400,300,600,700,800',
 		'character_set' => 'latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic',
 		'type'      => 'sans-serif',
+		'standard'	=> 1,
 	];
   return $websafe_fonts;
 
 }
+// le filtre 'et_websafe_fonts' s'applique via la fonction 'et_builder_get_websafe_fonts' dans Divi/includes/builder/core.php l.2825
 add_filter('et_websafe_fonts', 'afd_custom_fonts');
 
